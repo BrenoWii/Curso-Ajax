@@ -14,7 +14,12 @@ and open the template in the editor.
 
 
 
-        <button id="btn-users">Ajax</button>
+        <button id="btn-users">Users</button>
+        
+        <div id="div-users">
+            
+            
+        </div>
 
         <script src="assets/js/user.js"></script>
     </body>
