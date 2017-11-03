@@ -5,9 +5,10 @@ use app\models\user;
 
 
 
-sleep (2);
+sleep (1);
 
 $user = new user;
+$id = $_GET['id'];
 
 
-echo json_encode($user->all()) ;
+echo json_encode($user->find('id',$id)) ;

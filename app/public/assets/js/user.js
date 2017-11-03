@@ -7,7 +7,7 @@ window.onload = function () {
 
 
     btn_users.onclick = function () {
-       
+       debugger;
         
         xmlHttpGet('ajax/user.php',function(){
             
@@ -20,7 +20,10 @@ window.onload = function () {
             success(function(){
                 
                 
+                console.log(xhttp.responseText);
+                
                 var users = JSON.parse(xhttp.responseText);
+                
                 var table = `<table class='table table-striped'>`;
 
                 table += `<thead><tr><td>ID</td><td>Nome</td><td>Email</td></td></thead>`;
@@ -39,8 +42,8 @@ window.onload = function () {
                 div_users.innerHTML = table;
             });
             error(function(){
-                div_users.innerHTML='Ocorreu um erro'
+                div_users.innerHTML='Ocorreu um erro';
             });
-        });
+        },'?id=1');
     };
 };
