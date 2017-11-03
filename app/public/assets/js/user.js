@@ -1,24 +1,46 @@
-window.onload = function(){
-    
-    
+window.onload = function () {
+
+
     var btn_users = document.querySelector('#btn-users');
     var div_users = document.querySelector('#div-users');
 
-    var xhttp = new XMLHttpRequest();
-  
-  
-  btn_users.onclick = function(){
-      
-      if(xhttp.readyState == 4 && xhttp.status==200){
-          
-          var users = JSON.parse(xhttp.responseText);
-          console.log(users);
-      }
-      
-      xhttp.open('GET','user.php',true);
-    
-      xhttp.send();  
-      
-  };
-    
+
+
+    btn_users.onclick = function () {
+       
+        
+        xmlHttpGet('ajax/user.php',function(){
+            
+            
+            beforeSend(function(){
+                div_users.innerHTML =`<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> `;
+            });
+            
+            
+            success(function(){
+                
+                
+                var users = JSON.parse(xhttp.responseText);
+                var table = `<table class='table table-striped'>`;
+
+                table += `<thead><tr><td>ID</td><td>Nome</td><td>Email</td></td></thead>`;
+                table += `<tbody>`;
+                users.forEach(function (user) {
+                    table += `<tr>`;
+                    table += `<td>${user.id}</td>`;
+                    table += `<td>${user.nome}</td>`;
+                    table += `<td>${user.email}</td>`;
+
+                    table += `</tr>`;
+                });
+                table += `</tbody>`;
+                table += `</table>`;
+
+                div_users.innerHTML = table;
+            });
+            error(function(){
+                div_users.innerHTML='Ocorreu um erro'
+            });
+        });
+    };
 };
