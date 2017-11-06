@@ -1,37 +1,62 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>Ajax</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body>
-        <div class="container">
-            <button id="btn-users">Users</button>
-            <div class="row">
-               
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
 
-                <div id="div-users">
+           <ul class="nav nav-tabs">
+             <li class="active"><a data-toggle="tab" href="#home">Users</a></li>
+             <li><a data-toggle="tab" href="#menu1">Cadastrar</a></li>
+             <li><a data-toggle="tab" href="#menu2">Busca</a></li>
+           </ul>
 
+           <div class="tab-content">
+             <div id="home" class="tab-pane fade in active">
+               <br>
+               <button id="btn-users" class="btn btn-default">Listar users</button>
+               <hr>
+               <div id="div-users"></div>
+             </div>
+             <div id="menu1" class="tab-pane fade">
+               <br>
+               <div id="div-create"></div>
+               <form action="" method="POST" role="form" id="form-cadastrar" enctype="multipart/form-data">
 
-                </div>
+                   <div class="form-group">
+                       <label for="">Nome</label>
+                       <input type="text" class="form-control" name="name" placeholder="Nome">
+                   </div>
 
-            </div>
+                   <div class="form-group">
+                       <label for="">Email</label>
+                       <input type="text" class="form-control" name="email" placeholder="Email">
+                   </div>
 
+                   <button type="submit" class="btn btn-primary" id="btn-cadastrar">Cadastrar</button>
+               </form>
+             </div>
+             <div id="menu2" class="tab-pane fade in">
+               <br>
+               <form action="" id="form-buscar">
+                   <input type="text" name="name">
+                   <button type="submit">Buscar</button>
+                   <hr>
+                   <div id="div-busca"></div>
+               </form>
+             </div>
+           </div>
+           <hr>
         </div>
-
-
-
-
-        <script src="assets/js/xhttp.js"></script>
-
-        <script src="assets/js/user.js"></script>
-    </body>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="assets/js/xhttp.js"></script>
+    <script src="assets/js/user.js"></script>
+</body>
 </html>

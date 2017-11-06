@@ -9,7 +9,7 @@ namespace app\models;
  * @author Breno
  */
 abstract class model {
-    private $connection;
+    protected $connection;
     
     
     public function __construct() {

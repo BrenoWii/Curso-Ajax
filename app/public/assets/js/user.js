@@ -3,6 +3,57 @@ window.onload = function () {
 
     var btn_users = document.querySelector('#btn-users');
     var div_users = document.querySelector('#div-users');
+    var div_create = document.querySelector('#div-create');
+    var div_busca = document.querySelector('#div-busca');
+
+
+    var form_cadastrar = document.querySelector('#form-cadastrar');
+    var form_buscar = document.querySelector('#form-buscar');
+
+    
+    
+    form_buscar.addEventListener('submit',function (event){
+        event.preventDefault();
+        var form =  new FormData(form_buscar);
+        xmlHttpPost ('ajax/buscar.php',function(){
+            beforSend (function (){
+                div_busca.innerHTML = 'Aguarde estamos buscando';
+                
+            });
+            success (function (){
+                console.log(xhttp.responseText);
+                
+            });
+            
+        },form);
+    });
+    
+    form_cadastrar.onsubmit = function () {
+        event.preventDefault();
+        
+        
+        var form = new FormData(form_cadastrar);
+        xmlHttpPost('ajax/create.php',function (){
+            
+            beforeSend (function(){
+                div_create.innerHTML =`<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> `;
+
+            });
+            success (function(){
+                var response= xhttp.responseText;
+                if (response=='sucesso'){
+                    div_create.innerHTML =`Cadastrado com sucesso`;
+
+                }else{
+                    div_create.innerHTML =`Falha ao cadastrar`;
+                    
+                }
+            });
+        },form);
+        
+        
+    };
+
 
 
 
